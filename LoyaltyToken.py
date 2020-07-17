@@ -4,6 +4,7 @@ import time
 import sys
 from eth_account import Account
 
+#I am using Ganache; You can use your Infura link as url
 url = "HTTP://127.0.0.1:7545"
 web3 = Web3(Web3.HTTPProvider(url))
 account = input("Enter your account number : ")
@@ -32,10 +33,12 @@ while(1):
 	print("5. Exit")
 	c=int(input())
 	if(c==1):
+		# Get balance of tokens in your account.
 		balance = contract.functions.balance(account).call()
 		print("\nBalance is : ",balance)
 		print(" ")
 	if(c==2):
+		# Gift/Transfer tokens to another account.
 		amount = int(input("Enter the number of Tokens you want to Transfer : "))
 		account2 = input("Enter the account you want to transfer the tokens to : ")
 		print(" ")
@@ -50,6 +53,7 @@ while(1):
 			time.sleep(2)
 
 	if(c==3):
+		# Redeem the tokens for gifts/discount - Transfers tokens back to the owner.
 		amount = int(input("Enter the amount of Tokens :"))
 		print(" ")
 		try:
@@ -63,6 +67,7 @@ while(1):
 			print("The Transaction did not go through. Try again...")
 			time.sleep(2)
 	if(c==4):
+		# Transfers the specified tokens into the owner's account. Only accessible by the owner.
 		amount = int(input("Enter the amount : "))
 		print(" ")
 		try:
